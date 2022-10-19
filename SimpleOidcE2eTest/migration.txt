@@ -1,0 +1,1 @@
+ W:\Cs\dotnet-sdk-6.0.200-win-x64\dotnet.exe ef database update 20220807004216_Initial --startup-project "Stackjudge Identity Server\Stackjudge Identity Server.csproj"  --context Stackjudge_Identity_Server.Data.AppPersistedGrantDbContext
