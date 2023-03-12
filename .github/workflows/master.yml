@@ -30,7 +30,6 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        role-to-assume: arn:aws:iam::926974633545:role/my-github-actions-role
         aws-region: us-east-2
 
     - name: Login to Amazon ECR
@@ -59,16 +58,7 @@ jobs:
     - name: Build docker image
       run: |
         docker build --tag simple_oidc_ids6_e2e_test:latest .
-
-#    - name: Push to ECR
-#      id: ecr
-#      uses: jwalton/gh-ecr-push@v1
-#      with:
-#        access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        region: us-east-1
-#        local-image: simple_oidc_ids6_e2e_test:latest
-#        image: simple_oidc_ids6_e2e_test:latest
+        docker push simple_oidc_ids6_e2e_test/simple_oidc_ids6_e2e_test:latest
 
 #    - name: Save docker image
 #      run: |
