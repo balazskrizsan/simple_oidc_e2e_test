@@ -57,7 +57,7 @@ jobs:
 
     - name: Build docker image
       run: |
-        docker build --tag simple_oidc_ids6_e2e_test:latest .
+        docker build --tag simple_oidc_ids6_e2e_test/simple_oidc_ids6_e2e_test:latest .
         docker push simple_oidc_ids6_e2e_test/simple_oidc_ids6_e2e_test:latest
 
 #    - name: Save docker image
