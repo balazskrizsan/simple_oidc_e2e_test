@@ -57,7 +57,8 @@ jobs:
 
     - name: Build docker image
       run: |
-        docker build --tag simple_oidc_ids6_e2e_test:latest public.ecr.aws/x9g7n4x7/simple_oidc_ids6_e2e_test:latest .
+        docker build -t simple_oidc_ids6_e2e_test .
+        docker tag simple_oidc_ids6_e2e_test:latest public.ecr.aws/x9g7n4x7/simple_oidc_ids6_e2e_test:latest
         docker push public.ecr.aws/x9g7n4x7/simple_oidc_ids6_e2e_test:latest
 
 #    - name: Save docker image
