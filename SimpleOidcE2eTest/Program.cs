@@ -12,7 +12,7 @@ namespace SimpleOidcE2eTest
     public class Program
     {
         private static string CONNECTION_STRING =
-            "Host=localhost;Database=stackjudge;Port=54322;Username=admin;Password=admin_pass;";
+            "Host=localhost;Database=stackjudge;Port=54326;Username=admin;Password=admin_pass;";
 
         public static void Main(string[] args)
         {
@@ -41,6 +41,8 @@ namespace SimpleOidcE2eTest
                             options.EmitStaticAudienceClaim = true;
                         })
                         .AddAspNetIdentity<IdentityUser>()
+                        .AddConfigurationStore(AppConfigService.ConfigConfigurationStore)
+                        .AddOperationalStore(AppConfigService.ConfigOperationalStore)
                         .AddInMemoryClients(OidcConfig.Clients)
                         .AddInMemoryApiResources(OidcConfig.ApiResources)
                         .AddInMemoryApiScopes(OidcConfig.ApiScopes)

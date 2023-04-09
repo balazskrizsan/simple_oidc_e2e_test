@@ -53,6 +53,8 @@ public class Startup
 
         app.UseRouting();
 
+        InitializeDatabase(app);
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
@@ -65,5 +67,15 @@ public class Startup
                 pattern: "{controller}/{action}"
             );
         });
+    }
+
+    private void InitializeDatabase(IApplicationBuilder app)
+    {
+        using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+        {
+            serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+            serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>().Database.Migrate();
+            serviceScope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
+        }
     }
 }
