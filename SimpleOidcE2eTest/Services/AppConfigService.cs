@@ -6,6 +6,11 @@ namespace SimpleOidcE2eTest.Services;
 
 public static class AppConfigService
 {
+    public static void ConfigDbContext(DbContextOptionsBuilder options)
+    {
+        options.UseNpgsql(GetConnectionString());
+    }
+
     public static void ConfigConfigurationStore(ConfigurationStoreOptions options)
     {
         options.ConfigureDbContext = b => b.UseNpgsql(

@@ -11,9 +11,6 @@ namespace SimpleOidcE2eTest
 {
     public class Program
     {
-        private static string CONNECTION_STRING =
-            "Host=localhost;Database=stackjudge;Port=54326;Username=admin;Password=admin_pass;";
-
         public static void Main(string[] args)
         {
             CreateHostBuilder(args)
@@ -27,7 +24,7 @@ namespace SimpleOidcE2eTest
                 .ConfigureServices((_, services) =>
                 {
                     services.AddScoped<IExtensionGrantValidator, TokenExchangeGrantValidatorService>();
-                    services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(CONNECTION_STRING); });
+                    services.AddDbContext<AppDbContext>(AppConfigService.ConfigDbContext);
                     services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>()
                         .AddDefaultTokenProviders();
