@@ -6,6 +6,7 @@ namespace SimpleOidcE2eTest;
 
 public static class OidcConfig
 {
+    public const int LIFETIME_1SEC = 1;
     public const int LIFETIME_10SEC = 10;
     public const int LIFETIME_1MIN = 60;
     public const int LIFETIME_5MINS = 300;
@@ -105,6 +106,21 @@ public static class OidcConfig
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
             AccessTokenType = AccessTokenType.Reference
+        },
+        new Client
+        {
+            ClientId = "client3_client_credentials_1s",
+            ClientName = "Client3 client credentials 1s",
+            AllowAccessTokensViaBrowser = false,
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            ClientSecrets = { new Secret("client3_client_credentials_1s".Sha256()) },
+            AccessTokenLifetime = LIFETIME_1SEC,
+            AllowedScopes =
+            {
+                "test_scope",
+                "test_scope.a"
+            },
+            AccessTokenType = AccessTokenType.Jwt
         },
         new Client
         {
