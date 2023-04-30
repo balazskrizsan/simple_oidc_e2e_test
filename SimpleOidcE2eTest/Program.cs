@@ -36,6 +36,7 @@ namespace SimpleOidcE2eTest
                             options.Events.RaiseFailureEvents = true;
                             options.Events.RaiseSuccessEvents = true;
                             options.EmitStaticAudienceClaim = true;
+                            options.IssuerUri = "e2e.test";
                         })
                         .AddAspNetIdentity<IdentityUser>()
                         .AddConfigurationStore(AppConfigService.ConfigConfigurationStore)
