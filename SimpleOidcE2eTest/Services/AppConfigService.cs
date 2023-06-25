@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,8 @@ public static class AppConfigService
     
     private static string GetConnectionString()
     {
+        Console.WriteLine(AppSettingsService.Get()["psqlConnectionString"]);
+
         return AppSettingsService.Get()["psqlConnectionString"];
     }
 
